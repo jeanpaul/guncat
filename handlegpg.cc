@@ -1,23 +1,41 @@
 #include "main.ih"
 
-void handleGPG(Process &less, string line)
+void decryptor(Process *gpg, string *line)
 {
-    TempStream ts;
-    
     do
     {
-        ts << line << '\n';
-        getline(cin, line);
+        *gpg << *line << '\n';
+        getline(cin, *line);
     }
-    while (line.find("-----END PGP MESSAGE-----") != 0);
+    while (line->find("-----END PGP MESSAGE-----") != 0);
 
-    ts << line << endl;
-    ts.close();
+    *gpg << eoi;
+}
 
-    Process ungpg(Process::COUT, "/usr/bin/gpg --decrypt " + ts.fileName());
+void intoLess(Process *less, Process *gpg)
+{
+    *less << gpg->childOutStream().rdbuf();
+}
 
-    ungpg.start();
+void cerrMessages(Process *gpg)
+{
+    string line;
+    while (getline(gpg->childErrStream(), line))
+        ;
+}
 
-    while (getline(ungpg, line))
-        less << line << endl;
+void handleGPG(Process &less, string line)
+{
+    Process gpg(Process::ALL, 
+            "/usr/bin/gpg --no-auto-key-locate --batch --decrypt ");
+
+    thread decrypt(decryptor, &gpg, &line);
+    thread toLess(intoLess, &less, &gpg);
+    thread msgHandler(cerrMessages, &gpg);
+
+    gpg.start();
+
+    decrypt.join();
+    toLess.join();
+    msgHandler.join();
 }
