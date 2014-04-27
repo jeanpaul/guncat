@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+
+#include <bobcat/tempstream>
+#include <bobcat/process>
+
+namespace Icmbuild
+{
+    extern char version[];
+    extern char years[];
+    extern char author[];
+};
+
+
+using namespace std;
+using namespace FBB;
+
+void handleGPG(Process &less, string line);
+
