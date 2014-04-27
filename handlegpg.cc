@@ -27,7 +27,7 @@ void cerrMessages(Process *gpg)
 void handleGPG(Process &less, string line)
 {
     Process gpg(Process::ALL, 
-            "/usr/bin/gpg --no-auto-key-locate --batch --decrypt ");
+            "/usr/bin/gpg --quiet --no-auto-key-locate --batch --decrypt ");
 
     thread decrypt(decryptor, &gpg, &line);
     thread toLess(intoLess, &less, &gpg);
