@@ -22,20 +22,10 @@ int main(int argc, char **argv)
 try
 {
     Arg &arg = Arg::initialize("m:hlptv", longOptions, longEnd, argc, argv);
-
     arg.versionHelp(usage, version, 0);
-
-    cout << "# of arugments: " << arg.nArgs() << '\n';
-    return 0;
-
-    string line;
-    while (getline(cin, line))
-    {
-        if (line.find("-----BEGIN PGP MESSAGE-----") == 0)
-            handleGPG(line);
-        else
-            cout << line << endl;
-    }
+    
+    Process process;
+    process.arguments();
 }
 catch (int x)
 {

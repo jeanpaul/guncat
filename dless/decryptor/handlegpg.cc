@@ -39,4 +39,3 @@ void handleGPG(string line)
     toCout.join();
     msgHandler.join();
 }
-

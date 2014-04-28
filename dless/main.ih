@@ -5,6 +5,9 @@
 #include <bobcat/arg>
 #include <bobcat/process>
 
+#include "process/process.h"
+
+
 namespace Icmbuild
 {
     extern char version[];

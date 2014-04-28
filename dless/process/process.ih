@@ -1,0 +1,10 @@
+#include "process.h"
+
+#include <fstream>
+
+#include <bobcat/exception>
+#include <bobcat/arg>
+#include <bobcat/mstream>
+
+using namespace std;
+using namespace FBB;
