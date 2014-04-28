@@ -2,7 +2,7 @@
 #include <string>
 #include <thread>
 
-#include <bobcat/tempstream>
+#include <bobcat/arg>
 #include <bobcat/process>
 
 namespace Icmbuild
@@ -15,6 +15,8 @@ namespace Icmbuild
 
 using namespace std;
 using namespace FBB;
+using namespace Icmbuild;
 
-void handleGPG(Process &less, string line);
+void  usage(string  const  &progname);
+void handleGPG(string line);
 

@@ -12,9 +12,9 @@ void decryptor(Process *gpg, string *line)
     *gpg << eoi;
 }
 
-void intoLess(Process *less, Process *gpg)
+void intoCout(Process *gpg)
 {
-    *less << gpg->childOutStream().rdbuf();
+    cout << gpg->childOutStream().rdbuf();
 }
 
 void cerrMessages(Process *gpg)
@@ -24,18 +24,19 @@ void cerrMessages(Process *gpg)
         ;
 }
 
-void handleGPG(Process &less, string line)
+void handleGPG(string line)
 {
     Process gpg(Process::ALL, 
             "/usr/bin/gpg --quiet --no-auto-key-locate --batch --decrypt ");
 
     thread decrypt(decryptor, &gpg, &line);
-    thread toLess(intoLess, &less, &gpg);
+    thread toCout(intoCout, &gpg);
     thread msgHandler(cerrMessages, &gpg);
 
     gpg.start();
 
     decrypt.join();
-    toLess.join();
+    toCout.join();
     msgHandler.join();
 }
+
