@@ -1,31 +1,35 @@
 #include "decryptor.ih"
 
 Decryptor::Decryptor()
+:
+    d_arg(Arg::instance()),
+    d_gpgOptions(" ")
 {
-    Arg &arg = Arg::instance();
-
-    if (not arg.option(&d_gpg, "gpg"))      // override default gpg location
+    if (not d_arg.option(&d_gpg, "gpg"))      // override default gpg location
         d_gpg = "/usr/bin/gpg";
 
-    if (arg.option('p'))
+    if (d_arg.option('p'))
         getPassphrase();
 
-    arg.option(&d_msgName, 'm');            // get the name of the message 
-                                            // stream
+    if (not d_arg.option(&d_msgName, 'm'))  // get the name of the message 
+        d_msgName = "/dev/null";            // stream
 
-    if (not arg.option('t'))                // by default --no-tty is used
+    if (not d_arg.option('t'))                // by default --no-tty is used
         d_gpgOptions += " --no-tty";
 
-    if (not arg.option('l'))                // by default missing keys are
+    if (not d_arg.option('l'))                // by default missing keys are
         d_gpgOptions += " --no-auto-key-locate";            // searched for
 
     setVerbosity();                         // set GPG's verbosity
 
     setRemainingOptions();
 
+    if (not d_arg.option(0, "gpg-no-batch"))
+        d_gpgOptions += " --batch";
+        
     d_gpgOptions += " --decrypt";
 
-    if (arg.option("show-gpg"))
+    if (d_arg.option(0, "show-gpg"))
     {
         cout << d_gpg << ' ' << d_gpgOptions << '\n';
         throw 0;

@@ -1,13 +1,13 @@
-#include "process.ih"
+#include "gcat.ih"
 
-void Process::process(istream &in)
+void Gcat::process(istream &in)
 {
     string line;
 
     while (getline(cin, line))
     {
         if (line.find("-----BEGIN PGP MESSAGE-----") == 0)
-            decryptor.handleGPG(line);
+            d_decryptor.handleGPG(cin, line);
         else
             cout << line << endl;
     }

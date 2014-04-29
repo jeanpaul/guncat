@@ -1,6 +1,6 @@
 #include "decryptor.ih"
 
-void Decryptor::echo(bool on) const;
+void Decryptor::echo(bool on) const
 {
     struct termios tty;
     tcgetattr(STDIN_FILENO, &tty);

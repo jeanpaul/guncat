@@ -1,10 +1,10 @@
-#include "process.ih"
+#include "gcat.ih"
 
-void Process::processFileArguments()
+void Gcat::processFileArguments()
 {
     for (size_t idx = 0, end = d_arg.nArgs(); idx != end; ++idx)
     {
-        if (d_arg[idx] == "-")
+        if (string(d_arg[idx]) == "-")
             processCin();
         else
         {

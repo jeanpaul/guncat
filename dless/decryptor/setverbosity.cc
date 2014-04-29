@@ -3,7 +3,7 @@
 void Decryptor::setVerbosity()
 {
     string verbosity;
-    if (not arg.option(&verbosity, "verbose"))
+    if (not d_arg.option(&verbosity, "verbose"))
         d_gpgOptions += " --quiet";
     else 
     {

@@ -1,37 +1,18 @@
-#include "main.ih"
+#include "decryptor.ih"
 
-void decryptor(Process *gpg, string *line)
+void Decryptor::handleGPG(istream &in, string line)
 {
-    do
-    {
-        *gpg << *line << '\n';
-        getline(cin, *line);
-    }
-    while (line->find("-----END PGP MESSAGE-----") != 0);
+    Process gpg(Process::ALL, d_gpg + d_gpgOptions);
 
-    *gpg << eoi;
-}
+    ofstream gpgMessages;
 
-void intoCout(Process *gpg)
-{
-    cout << gpg->childOutStream().rdbuf();
-}
+    if (d_msgName != "-")
+        Exception::open(gpgMessages, d_msgName);
 
-void cerrMessages(Process *gpg)
-{
-    string line;
-    while (getline(gpg->childErrStream(), line))
-        ;
-}
-
-void handleGPG(string line)
-{
-    Process gpg(Process::ALL, 
-            "/usr/bin/gpg --quiet --no-auto-key-locate --batch --decrypt ");
-
-    thread decrypt(decryptor, &gpg, &line);
-    thread toCout(intoCout, &gpg);
-    thread msgHandler(cerrMessages, &gpg);
+    thread decrypt(decryptorThread, &in, &gpg, &line);
+    thread toCout(coutThread, &gpg);
+    thread msgHandler(messagesThread, &gpg, 
+                      d_msgName.empty() ? &cerr : &gpgMessages);
 
     gpg.start();
 

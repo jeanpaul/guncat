@@ -6,6 +6,7 @@ namespace
     {
         Arg::LongOption("gpg",          Arg::Required),
         Arg::LongOption("passphrase",   'p'),
+        Arg::LongOption("gpg-no-batch", Arg::None),
         Arg::LongOption("gpg-msg",      'm'),
         Arg::LongOption("gpg-option",   Arg::Required),
         Arg::LongOption("help",         'h'),
@@ -24,8 +25,8 @@ try
     Arg &arg = Arg::initialize("m:hlptv", longOptions, longEnd, argc, argv);
     arg.versionHelp(usage, version, 0);
     
-    Process process;
-    process.arguments();
+    Gcat gcat;
+    gcat.arguments();
 }
 catch (int x)
 {

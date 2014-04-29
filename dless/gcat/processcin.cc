@@ -1,12 +1,12 @@
-#include "process.ih"
+#include "gcat.ih"
 
-void Process::processCin()
+void Gcat::processCin()
 {
     switch (d_processedCin)
     {
         case FIRST:
             process(cin);
-            d_processCin = DONE;
+            d_processedCin = DONE;
         break;
 
         case DONE:
@@ -15,7 +15,7 @@ void Process::processCin()
         break;
     
         case WARNED:
-        breal;
+        break;
     }
 }
 

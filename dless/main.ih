@@ -3,10 +3,8 @@
 #include <thread>
 
 #include <bobcat/arg>
-#include <bobcat/process>
 
-#include "process/process.h"
-
+#include "gcat/gcat.h"
 
 namespace Icmbuild
 {
@@ -21,5 +19,3 @@ using namespace FBB;
 using namespace Icmbuild;
 
 void  usage(string  const  &progname);
-void handleGPG(string line);
-

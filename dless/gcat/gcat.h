@@ -1,5 +1,7 @@
-#ifndef INCLUDED_PROCESS_
-#define INCLUDED_PROCESS_
+#ifndef INCLUDED_GCAT_
+#define INCLUDED_GCAT_
+
+#include <iosfwd>
 
 #include "../decryptor/decryptor.h"
 
@@ -8,7 +10,7 @@ namespace FBB
     class Arg;
 }
 
-class Process
+class Gcat
 {
     enum CinSpec
     {
@@ -23,13 +25,13 @@ class Process
     Decryptor d_decryptor;
 
     public:
-        Process();
+        Gcat();
         void arguments();
 
     private:
-        process(istream &in);
-        processCin();
-        processFileArguments();
+        void process(std::istream &in);
+        void processCin();
+        void processFileArguments();
 };
         
 #endif
