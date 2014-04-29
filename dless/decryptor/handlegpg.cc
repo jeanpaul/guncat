@@ -2,21 +2,38 @@
 
 void Decryptor::handleGPG(istream &in, string line)
 {
-    Process gpg(Process::ALL, d_gpg + d_gpgOptions);
+    Pipe pipe;
+    string passphrase_fd;
 
-    ofstream gpgMessages;
+    if (not d_passphrase.empty())
+    {
+        passphrase_fd = " --passphrase-fd " + to_string(pipe.readFd());
 
-    if (d_msgName != "-")
-        Exception::open(gpgMessages, d_msgName);
+        OFdStream pwd(pipe.writeFd());
+        pwd << d_passphrase << endl;
+    }
 
-    thread decrypt(decryptorThread, &in, &gpg, &line);
-    thread toCout(coutThread, &gpg);
-    thread msgHandler(messagesThread, &gpg, 
-                      d_msgName.empty() ? &cerr : &gpgMessages);
+    Process gpg(Process::CIN | Process::CERR, 
+                    d_gpg + passphrase_fd + d_gpgOptions);
+
+//    thread decrypt(decryptorThread, &in, &gpg, &line);
 
     gpg.start();
 
-    decrypt.join();
-    toCout.join();
-    msgHandler.join();
+    gpg << line << '\n';
+    do
+    {
+        getline(in, line);
+        gpg << line << '\n';
+    }
+    while (line.find("-----END PGP MESSAGE-----") != 0);
+
+    gpg.eoi();
+
+//    decrypt.join();
+
+    (d_msgName == "-" ? cerr : d_msg)  << gpg.childErrStream().rdbuf();
 }
+
+
+

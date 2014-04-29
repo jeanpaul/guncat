@@ -32,9 +32,14 @@ Decryptor::Decryptor()
     if (d_arg.option(0, "show-gpg"))
     {
         cout << d_gpg;
+        if (not d_passphrase.empty())
+            cout << " --passphrase-fd <fd>";
         cout << d_gpgOptions << '\n';
         throw 0;
     }
+
+    if (d_msgName != "-")
+        Exception::open(d_msg, d_msgName);
 }
 
 

@@ -2,15 +2,37 @@
 
 void Decryptor::decryptorThread(istream *in, Process *gpg, string *line)
 {
+    TempStream tmp;
+
+    tmp << *line << '\n';
+
     do
     {
-        *gpg << *line << '\n';
         getline(*in, *line);
+        tmp << *line << '\n';
     }
     while (line->find("-----END PGP MESSAGE-----") != 0);
 
-cerr << "SAW END PGP MESSAGE\n";
+    tmp.seekg(0);
 
-    *gpg << eoi;
+    *gpg << tmp.rdbuf() << eoi;
+
+
+//    string contents;
+//    contents += *line;
+//    contents += '\n';
+//
+//    do
+//    {
+//        getline(*in, *line);
+//        contents += *line;
+//        contents += '\n';
+//    }
+//    while (line->find("-----END PGP MESSAGE-----") != 0);
+//
+//    *gpg << contents << eoi;
+
+
+cerr << "GPG: " << *line << endl;
 }
 

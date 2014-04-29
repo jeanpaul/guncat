@@ -2,8 +2,7 @@
 #define INCLUDED_DECRYPTOR_
 
 #include <string>
-
-#include <bobcat/pipe>
+#include <fstream>
 
 namespace FBB
 {
@@ -14,12 +13,11 @@ namespace FBB
 class Decryptor
 {
     FBB::Arg &d_arg;
-
     std::string d_gpg;
     std::string d_gpgOptions;
     std::string d_passphrase;
     std::string d_msgName;
-    FBB::Pipe   d_pipe;
+    std::ofstream d_msg;
 
     public:
         Decryptor();
