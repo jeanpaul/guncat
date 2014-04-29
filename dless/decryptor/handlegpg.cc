@@ -16,8 +16,6 @@ void Decryptor::handleGPG(istream &in, string line)
     Process gpg(Process::CIN | Process::CERR, 
                     d_gpg + passphrase_fd + d_gpgOptions);
 
-//    thread decrypt(decryptorThread, &in, &gpg, &line);
-
     gpg.start();
 
     gpg << line << '\n';
@@ -29,8 +27,6 @@ void Decryptor::handleGPG(istream &in, string line)
     while (line.find("-----END PGP MESSAGE-----") != 0);
 
     gpg.eoi();
-
-//    decrypt.join();
 
     (d_msgName == "-" ? cerr : d_msg)  << gpg.childErrStream().rdbuf();
 }

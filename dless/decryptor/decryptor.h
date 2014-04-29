@@ -30,12 +30,6 @@ class Decryptor
         void getPassphrase();
         void setVerbosity();
         void setRemainingOptions();
-
-        static void decryptorThread(std::istream *in, 
-                                    FBB::Process *gpg, std::string *line);
-        static void coutThread(FBB::Process *gpg);
-        static void messagesThread(FBB::Process *gpg, std::ostream *messages);
-
 };
         
 #endif

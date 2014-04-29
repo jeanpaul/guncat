@@ -3,14 +3,12 @@
 #include <iostream>
 #include <unistd.h>
 #include <termios.h>
-#include <thread>
 
 #include <bobcat/exception>
 #include <bobcat/arg>
 #include <bobcat/process>
 #include <bobcat/ofdstream>
 #include <bobcat/pipe>
-#include <bobcat/tempstream>
 
 using namespace std;
 using namespace FBB;
