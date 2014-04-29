@@ -1,4 +1,11 @@
 #include "decryptor.h"
 
+#include <unistd.h>
+#include <termios.h>
+
+#include <bobcat/exception>
+#include <bobcat/arg>
+
 using namespace std;
+using namespace FBB;
 
