@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include <bobcat/pipe>
+
 namespace FBB
 {
     class Arg;
@@ -17,6 +19,7 @@ class Decryptor
     std::string d_gpgOptions;
     std::string d_passphrase;
     std::string d_msgName;
+    FBB::Pipe   d_pipe;
 
     public:
         Decryptor();

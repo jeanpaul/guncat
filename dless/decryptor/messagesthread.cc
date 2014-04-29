@@ -2,5 +2,7 @@
 
 void Decryptor::messagesThread(Process *gpg, ostream *messages)
 {
-    *messages << gpg->childErrStream().rdbuf();
+//    *messages << gpg->childErrStream().rdbuf();
+cerr << gpg->childErrStream().rdbuf();
+
 }

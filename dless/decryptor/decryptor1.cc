@@ -31,9 +31,12 @@ Decryptor::Decryptor()
 
     if (d_arg.option(0, "show-gpg"))
     {
-        cout << d_gpg << ' ' << d_gpgOptions << '\n';
+        cout << d_gpg;
+        cout << d_gpgOptions << '\n';
         throw 0;
     }
 }
+
+
 
 

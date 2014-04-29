@@ -4,10 +4,10 @@ void Gcat::process(istream &in)
 {
     string line;
 
-    while (getline(cin, line))
+    while (getline(in, line))
     {
         if (line.find("-----BEGIN PGP MESSAGE-----") == 0)
-            d_decryptor.handleGPG(cin, line);
+            d_decryptor.handleGPG(in, line);
         else
             cout << line << endl;
     }

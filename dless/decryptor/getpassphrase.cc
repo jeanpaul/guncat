@@ -14,5 +14,10 @@ void Decryptor::getPassphrase()
     if (interactive)
         cout << endl;
 
-    echo(true);    
+    d_gpgOptions += " --passphrase-fd " + to_string(d_pipe.readFd());
+
+    OFdStream pwd(d_pipe.writeFd());
+    pwd << d_passphrase << endl;
+
+    echo(true);
 }

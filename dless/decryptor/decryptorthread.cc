@@ -9,6 +9,8 @@ void Decryptor::decryptorThread(istream *in, Process *gpg, string *line)
     }
     while (line->find("-----END PGP MESSAGE-----") != 0);
 
+cerr << "SAW END PGP MESSAGE\n";
+
     *gpg << eoi;
 }
 

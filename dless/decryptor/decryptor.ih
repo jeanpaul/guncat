@@ -8,6 +8,7 @@
 #include <bobcat/exception>
 #include <bobcat/arg>
 #include <bobcat/process>
+#include <bobcat/ofdstream>
 
 using namespace std;
 using namespace FBB;
