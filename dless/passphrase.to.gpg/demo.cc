@@ -1,8 +1,10 @@
 
 #include <string>
 #include <iostream>
+       #include <sys/types.h>
        #include <termios.h>
        #include <unistd.h>
+#include <thread>
 
 #include <bobcat/pipe>
 #include <bobcat/process>
@@ -11,6 +13,34 @@
 
 using namespace std;
 using namespace FBB;
+
+void inStream(Process *gpg, istream *in)
+{
+    *gpg << in->rdbuf();
+    *gpg << eoi;
+}
+    
+void runPGP(string const &out, string line)
+{
+    
+    Pipe pipe;
+    {
+        OFdStream writePwd(pipe.writeFd());
+        writePwd << line << endl;
+    }
+
+    line = "/usr/bin/gpg --passphrase-fd " + to_string(pipe.readFd()) +
+                " --batch --quiet --output " + out + " --decrypt";
+
+    Process gpg(Process::CIN, line);
+
+    ifstream in("hein");
+
+    gpg.start();
+
+    thread inThread(inStream, &gpg, &in);
+    inThread.join();
+}
 
 int main(int argc, char **argv)
 {
@@ -27,23 +57,17 @@ int main(int argc, char **argv)
     tty.c_lflag |= ECHO;
     tcsetattr(STDIN_FILENO, TCSANOW, &tty);
 
-//    cout << "\n"
-//            "done. passphrase was: `" << line << "'\n";
 
-    Pipe pwd;
-    {
-        OFdStream writePwd(pwd.writeFd());
-        writePwd << line << endl;
-    }
+    runPGP("out1", line);
+    runPGP("out2", line);
 
-    line = "/usr/bin/gpg --passphrase-fd " + to_string(pwd.readFd()) +
-                " --batch --quiet --output out --decrypt hein";
-
-    Process gpg(Process::NONE, line);
-
-    gpg.start();
-    gpg.waitForChild();
+//    gpg.waitForChild();
 }
+
+
+
+
+
 
 
 
