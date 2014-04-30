@@ -42,7 +42,7 @@ void install(string what, string where)
         run("gzip -9 < changelog > " + where + "/changelog.gz");
     
         printf("  INSTALLING the html-manual page at `", where, "'\n");
-        run("cp tmp/manhtml/" PROJECT "man.html " + where);
+        run("cp tmp/manhtml/" PROJECT ".1.html " + where);
 
         printf("  INSTALLING README at `", where, "\n");
         run("cp README " + where);

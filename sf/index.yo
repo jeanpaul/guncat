@@ -42,8 +42,7 @@ secure and Free Open Source software downloads" /></a>
     )
 
     itemization(
-    it() Here is the url(html-version of the main ucat man-page)
-                (ucatman.html).
+    it() Here is the url(html-version of the ucat man-page)(ucat.1.html).
     )
 
 Enjoy ucat !
@@ -52,3 +51,7 @@ includefile(/home/frank/git/PROJECTS.yo)
 
 Contact the author through url(his sourceforge e-mail address)
                               (mailto:fbbrokken@users.sourceforge.net)
+
+
+
+
