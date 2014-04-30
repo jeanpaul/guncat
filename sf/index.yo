@@ -1,0 +1,54 @@
+htmlbodyopt(text)(#27408B)
+htmlbodyopt(bgcolor)(#FFFAF0)
+
+includefile(../ucat/release.yo)
+
+mailto(fbbrokken@users.sourceforge.net)
+
+affiliation(Center for Information Technology, University of Groningen)
+
+notableofcontents()
+
+report(ucat V _CurVers_)
+      (Frank B. Brokken (f.b.brokken@rug.nl)nl())
+      (_CurYrs_)
+
+center(
+    htmlcommand(
+        <img src="ucat.jpg" border="0" alt="ucat Image" />
+    )
+  )
+
+COMMENT(
+    htmlcommand(
+        <a href="http://sourceforge.net">
+        <img src="http://sourceforge.net/sflogo.php?group_id=127615&amp;type=2"
+        width="125" height="37" border="0" alt="SourceForge.net Logo" />
+        </a>
+    )
+END COMMENT)
+
+This is the bf(VERY MUCH UNDER CONSTRUCTION) 
+main page of the ucat project as hosted on Sourceforge.net.
+
+The project itself can be reached at 
+lurl(http://sourceforge.net/projects/ucat/)
+
+htmlcommand(
+<a href="http://sourceforge.net/projects/ucat"><img
+src="http://sflogo.sourceforge.net/sflogo.php?group_id=2210643&type=8"
+width="80" height="15" border="0" alt="Get ucat at SourceForge.net. Fast,
+secure and Free Open Source software downloads" /></a>
+    )
+
+    itemization(
+    it() Here is the url(html-version of the main ucat man-page)
+                (ucatman.html).
+    )
+
+Enjoy ucat !
+
+includefile(/home/frank/git/PROJECTS.yo)
+
+Contact the author through url(his sourceforge e-mail address)
+                              (mailto:fbbrokken@users.sourceforge.net)

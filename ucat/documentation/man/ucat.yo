@@ -1,0 +1,46 @@
+includefile(../../release.yo)
+
+htmlbodyopt(text)(#27408B)
+htmlbodyopt(bgcolor)(#FFFAF0)
+
+gagmacrowarning(ucat)
+mailto(f.b.brokken@rug.nl)
+
+DEFINEMACRO(u)(0)(bf(ucat))
+
+manpage(ucat)(1)(_CurYrs_)(ucat__CurVers_.tar.gz)(TO DO)
+
+manpagename(ucat)(Ucat TO DO)
+
+manpagesynopsis()
+        u()  TO DO
+
+manpagedescription()
+
+    TO DO
+
+manpagesection(OPTIONS)
+
+    TO DO
+
+manpagefiles()
+
+    TO DO
+
+manpageseealso() 
+
+    TO DO
+
+manpagebugs()
+    None reported
+
+manpagesection(COPYRIGHT)
+    This is free software, distributed under the terms of the `GNU General
+Public License'. Copyright remains with the author. u() is found at
+tt(http://ucat.sourceforge.net/).
+
+manpagesection(ORGANIZATION)
+    Center for Information Technology, University of Groningen.
+
+manpageauthor()
+    Frank B. Brokken (bf(f.b.brokken@rug.nl)).

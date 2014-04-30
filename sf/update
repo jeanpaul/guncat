@@ -1,0 +1,23 @@
+#!/bin/bash
+
+WD=`pwd`
+
+cd ../ucat 
+    build man || exit 1
+cd $WD
+
+yodl2html index.yo || exit 1
+
+scp ../ucat/tmp/man*/*.html index.html fbb,ucat@web.sourceforge.net:htdocs/
+
+echo -n "update the images as well [y/n] ? "
+read yesno
+
+if [ "$yesno" == "y" ] ; then
+    scp ucat.jpg fbb,ucat@web.sourceforge.net:htdocs/
+fi
+
+rm index.html
+
+cd ../ucat 
+    build distclean
