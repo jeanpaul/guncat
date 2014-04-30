@@ -21,7 +21,9 @@
 
     // The compiler options to use. Define CFLAGS instead if a C compiler is
     // used.
+#ifndef CXXFLAGS
 #define CXXFLAGS        " --std=c++0x -Wall -O2"
+#endif
 
     // Options passed to the linker:
 #define LDFLAGS         ""
