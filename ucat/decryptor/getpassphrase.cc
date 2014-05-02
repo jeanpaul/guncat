@@ -7,7 +7,7 @@ void Decryptor::getPassphrase()
     bool interactive;
 
     if ((interactive = isatty(STDIN_FILENO)))
-        cout << "Enter passphrase: " << flush;
+        cerr << "Enter passphrase: " << flush;
 
     getline(cin, d_passphrase);
 

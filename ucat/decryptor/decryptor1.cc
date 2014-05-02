@@ -8,9 +8,6 @@ Decryptor::Decryptor()
     if (not d_arg.option(&d_gpg, "gpg"))      // override default gpg location
         d_gpg = "/usr/bin/gpg";
 
-    if (d_arg.option('p'))
-        getPassphrase();
-
     if (not d_arg.option(&d_msgName, 'm'))  // get the name of the message 
         d_msgName = "/dev/null";            // stream
 

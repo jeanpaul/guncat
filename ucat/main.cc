@@ -34,7 +34,7 @@ catch (int x)
 }
 catch (exception const &exc)
 {
-    cerr << "Exception: " << exc.what() << '\n';
+    cerr << exc.what() << '\n';
     return 1;
 }
 catch (...)

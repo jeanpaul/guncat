@@ -8,6 +8,7 @@ namespace FBB
 {
     class Arg;
     class Process;
+    class Pipe;
 }
 
 class Decryptor
@@ -21,15 +22,20 @@ class Decryptor
 
     public:
         Decryptor();
+        ~Decryptor();
                                                 // line must contain the
                                                 // BEGIN PGP MESSAGE header 
-        void handleGPG(std::istream &in, std::string line);
+        void handleGPG(std::istream &in, std::string const &pgpHeader);
 
     private:
         void echo(bool trueIsOn) const;
         void getPassphrase();
         void setVerbosity();
         void setRemainingOptions();
+
+        std::string pipePassphrase(FBB::Pipe &pipe);
+        int insertPGPsection(FBB::Process &gpg, std::string const &pgpHeader, 
+                                std::istream &in);
 };
         
 #endif
