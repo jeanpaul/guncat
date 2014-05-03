@@ -13,7 +13,7 @@ void usage(std::string const &progname)
     "   [options] - optional arguments (short options between parentheses):\n"
 
     "     --gpg <path>:  path to the gpg program (default: /usr/bin/gpg)\n"
-    "     --gpg-msg (-m) [path]: specify - to write gpg's messages to "
+    "     --gpg-msg (-m) path: specify - to write gpg's messages to "
                                                                 "stderr,\n"
     "                  otherwise write messages to `path' (by default "
                                                                 "messages\n"
