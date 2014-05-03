@@ -25,8 +25,8 @@ try
     Arg &arg = Arg::initialize("m:hlptv", longOptions, longEnd, argc, argv);
     arg.versionHelp(usage, version, 0);
     
-    Gcat gcat;
-    gcat.arguments();
+    Guncat guncat;
+    guncat.arguments();
 }
 catch (int x)
 {

@@ -1,5 +1,5 @@
 #!/bin/bash
-PROJECT=ucat
+PROJECT=guncat
 
                                         # load the version
 VERSION=`grep VERSION ${PROJECT}/VERSION |

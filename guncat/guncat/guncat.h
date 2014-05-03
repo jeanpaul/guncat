@@ -1,5 +1,5 @@
-#ifndef INCLUDED_GCAT_
-#define INCLUDED_GCAT_
+#ifndef INCLUDED_GUNCAT_
+#define INCLUDED_GUNCAT_
 
 #include <iosfwd>
 
@@ -10,7 +10,7 @@ namespace FBB
     class Arg;
 }
 
-class Gcat
+class Guncat
 {
     enum CinSpec
     {
@@ -25,7 +25,7 @@ class Gcat
     Decryptor d_decryptor;
 
     public:
-        Gcat();
+        Guncat();
         void arguments();
 
     private:

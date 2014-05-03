@@ -4,7 +4,7 @@
 
 #include <bobcat/arg>
 
-#include "gcat/gcat.h"
+#include "guncat/guncat.h"
 
 namespace Icmbuild
 {

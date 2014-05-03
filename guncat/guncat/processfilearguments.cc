@@ -1,6 +1,6 @@
-#include "gcat.ih"
+#include "guncat.ih"
 
-void Gcat::processFileArguments()
+void Guncat::processFileArguments()
 {
     for (size_t idx = 0, end = d_arg.nArgs(); idx != end; ++idx)
     {

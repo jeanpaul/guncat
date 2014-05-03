@@ -1,4 +1,4 @@
-#!/usr/bin/icmake -qt/tmp/ucat
+#!/usr/bin/icmake -qt/tmp/guncat
 
 #include "icmconf"
 

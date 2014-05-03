@@ -1,10 +1,10 @@
-ucat (0.90.00)
+guncat (0.90.00)
 
   * Initial completion of the program and man-page.
 
  -- Frank B. Brokken <f.b.brokken@rug.nl>  Sat, 03 May 2014 11:48:43 +0200
 
-ucat (0.00.00)
+guncat (0.00.00)
 
   * Preparing the sourceforge archive, and finalizing release 0.00.00
 

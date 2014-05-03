@@ -1,15 +1,15 @@
-Ucat was designed to tackle a problem encountered with (partically) PGP
+Guncat was designed to tackle a problem encountered with (partically) PGP
 encrypted files (as encountered, e.g., in mailboxes): the encrypted sections
 of such files are relatively difficult to browse through.
 
-Ucat acts like unix's cat command, but handles (partially) encrypted sections
-of processed files. Sections of ucat's input files which are surrounded by
+Guncat acts like unix's cat command, but handles (partially) encrypted sections
+of processed files. Sections of guncat's input files which are surrounded by
     -----BEGIN PGP MESSAGE-----
 and
     -----END PGP MESSAGE-----
 markers are decrypted before being concatenated to the std. output stream.
 
-Ucat's output (i.e., the standard output stream) may subsequently be processed
+Guncat's output (i.e., the standard output stream) may subsequently be processed
 by other programs, like grep or less.
 
 April 2014

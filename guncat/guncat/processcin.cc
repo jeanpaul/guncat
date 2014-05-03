@@ -1,6 +1,6 @@
-#include "gcat.ih"
+#include "guncat.ih"
 
-void Gcat::processCin()
+void Guncat::processCin()
 {
     switch (d_processedCin)
     {

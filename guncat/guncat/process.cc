@@ -1,6 +1,6 @@
-#include "gcat.ih"
+#include "guncat.ih"
 
-void Gcat::process(istream &in)
+void Guncat::process(istream &in)
 {
     string line;
 

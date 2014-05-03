@@ -1,6 +1,6 @@
-#include "gcat.ih"
+#include "guncat.ih"
 
-Gcat::Gcat()
+Guncat::Guncat()
 :
     d_arg(Arg::instance())
 {

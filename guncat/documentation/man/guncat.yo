@@ -5,7 +5,7 @@ includefile(../../release.yo)
 htmlbodyopt(text)(#27408B)
 htmlbodyopt(bgcolor)(#FFFAF0)
 
-gagmacrowarning(ucat)
+gagmacrowarning(guncat)
 mailto(f.b.brokken@rug.nl)
 
 DEFINEMACRO(lsoption)(3)(\
@@ -20,17 +20,17 @@ DEFINEMACRO(loption)(1)(\
 DEFINEMACRO(soption)(1)(\
     bf(-ARG1)\
 )
-DEFINEMACRO(u)(0)(bf(ucat))
-DEFINEMACRO(U)(0)(bf(Ucat))
+DEFINEMACRO(u)(0)(bf(guncat))
+DEFINEMACRO(U)(0)(bf(Guncat))
 DEFINEMACRO(g)(0)(bf(gpg))
 
-manpage(ucat)(1)(_CurYrs_)(ucat__CurVers_.tar.gz)
-        (ucat - unencrypting file concatenation)
+manpage(guncat)(1)(_CurYrs_)(guncat__CurVers_.tar.gz)
+        (guncat - unencrypting file concatenation)
 
-manpagename(ucat)(catenates files, unencrypting pgp encrypted sections)
+manpagename(guncat)(catenates files, unencrypting pgp encrypted sections)
 
 manpagesynopsis()
-       bf(ucat) [OPTIONS] tt([file(s)]) nl()
+       bf(guncat) [OPTIONS] tt([file(s)]) nl()
         [OPTIONS] - cf. section bf(OPTIONS)nl()
         [file+nop()(s)] - optional files to process (cf. section bf(INPUT
             FILE(S)))nl()
@@ -149,7 +149,7 @@ manpagebugs()
 manpagesection(COPYRIGHT)
     This is free software, distributed under the terms of the `GNU General
 Public License'. Copyright remains with the author. U() is available at
-tt(http://ucat.sourceforge.net/).
+tt(http://guncat.sourceforge.net/).
 
 manpagesection(ORGANIZATION)
     Center for Information Technology, University of Groningen.

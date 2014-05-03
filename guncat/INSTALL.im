@@ -1,5 +1,5 @@
     // Specify the name of the project:
-#define PROJECT             "ucat"
+#define PROJECT             "guncat"
 
     // When defined, these overrule COMPILER and COMPILER_OPTIONS
     // COMPILER and COMPILER_OPTIONS are now obsolete
