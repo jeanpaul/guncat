@@ -3,11 +3,16 @@
 #include <iostream>
 #include <unistd.h>
 #include <termios.h>
+#include <fcntl.h>
+
+#include <sys/types.h>
+#include <sys/stat.h>
 
 #include <bobcat/exception>
 #include <bobcat/arg>
 #include <bobcat/process>
 #include <bobcat/ofdstream>
+#include <bobcat/ifdstream>
 #include <bobcat/pipe>
 
 using namespace std;

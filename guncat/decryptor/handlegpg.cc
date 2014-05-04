@@ -17,9 +17,6 @@ void Decryptor::handleGPG(istream &in, string const &pgpHeader)
         if (insertPGPsection(gpg, pgpHeader, in) != 2)
             return;
     
-        if (not isatty(STDIN_FILENO))
-            throw Exception() << "Incorrect passphrase, cannot continue\n";
-
         if (not in.seekg(offset, ios::beg))
             throw Exception() << "File cannot be repositioned "
                                         "following incorrect passphrase\n";

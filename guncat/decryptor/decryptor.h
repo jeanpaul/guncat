@@ -4,6 +4,8 @@
 #include <string>
 #include <fstream>
 
+struct termios;
+
 namespace FBB
 {
     class Arg;
@@ -28,7 +30,7 @@ class Decryptor
         void handleGPG(std::istream &in, std::string const &pgpHeader);
 
     private:
-        void echo(bool trueIsOn) const;
+        int echo(struct termios *ttySaved, bool reset = false) const;
         void getPassphrase();
         void setVerbosity();
         void setRemainingOptions();

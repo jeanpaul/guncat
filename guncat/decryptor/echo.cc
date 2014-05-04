@@ -1,14 +1,22 @@
 #include "decryptor.ih"
 
-void Decryptor::echo(bool on) const
+int Decryptor::echo(struct termios *ttySaved, bool reset) const
 {
-    struct termios tty;
-    tcgetattr(STDIN_FILENO, &tty);
+    int fd = open("/dev/tty", O_RDONLY);
+    
+    struct termios tty; 
 
-    if (on)
-        tty.c_lflag |= ECHO;
+    tcgetattr(fd, &tty);
+
+    if (reset)
+        tty = *ttySaved;
     else
+    {
+        *ttySaved = tty;
         tty.c_lflag &= ~ECHO;
+    }
 
-    tcsetattr(STDIN_FILENO, TCSANOW, &tty);
+    tcsetattr(fd, TCSANOW, &tty);
+
+    return fd;
 }

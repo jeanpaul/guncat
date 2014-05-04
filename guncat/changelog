@@ -1,3 +1,10 @@
+guncat (0.91.00)
+
+  * The GPG passphrase is read from /dev/tty, and not from the std. input
+    stream (cin) anymore
+
+ -- Frank B. Brokken <f.b.brokken@rug.nl>  Sun, 04 May 2014 10:55:53 +0200
+
 guncat (0.90.00)
 
   * Initial completion of the program and man-page.

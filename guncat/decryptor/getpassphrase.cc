@@ -2,17 +2,16 @@
 
 void Decryptor::getPassphrase()
 {
-    echo(false);
+    struct termios ttySaved;
 
-    bool interactive;
+    int fd = echo(&ttySaved);       // switch off echoing, fd to /dev/tty
 
-    if ((interactive = isatty(STDIN_FILENO)))
-        cerr << "Enter passphrase: " << flush;
+    cerr << "Enter passphrase: ";   
 
-    getline(cin, d_passphrase);
+    IFdStream in(fd);               // get the passphrase from /dev/tty
+    getline(in, d_passphrase);
 
-    if (interactive)
-        cout << endl;
+    cerr << '\n';                   // echo the Enter following the passphrase
 
-    echo(true);
+    echo(&ttySaved, true);          // restore the echoing state
 }
