@@ -1,3 +1,10 @@
+guncat (0.92.00)
+
+  * The GPG passphrase is now requested only once. It is only requested again
+    if a provided passphrase was incorrect.
+
+ -- Frank B. Brokken <f.b.brokken@rug.nl>  Tue, 27 May 2014 15:57:34 +0200
+
 guncat (0.91.00)
 
   * The GPG passphrase is read from /dev/tty, and not from the std. input

@@ -6,7 +6,7 @@ void Decryptor::handleGPG(istream &in, string const &pgpHeader)
 
     for (size_t attempt = 1; ; ++attempt)
     {
-        if (d_arg.option('p'))
+        if (d_passphrase.empty() && d_arg.option('p'))
             getPassphrase();
 
         Pipe pipe;
@@ -27,7 +27,10 @@ void Decryptor::handleGPG(istream &in, string const &pgpHeader)
                                                     "correct passphrase\n";
 
         if (d_arg.option('p'))
+        {
             cerr << "Passphrase incorrect. Try again...\n";
+            d_passphrase.clear();
+        }
     }
 }
 
