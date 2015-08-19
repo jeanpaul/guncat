@@ -1,5 +1,5 @@
 # guncat
-       Guncat  was  designed to tackle a problem encountered with (partically)
+       Guncat  was  designed to tackle a problem encountered with (partially)
        PGP encrypted files (which may be  encountered  in,  e.g.,  mailboxes).
        Tools  to  process text-files (like grep(1), or less(1)) may be used to
        process those files, but standard tools like cat(1) leave PGP encrypted
